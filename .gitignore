@@ -7,3 +7,6 @@ dist/
 .DS_Store
 *.log
 npm-debug.log*
+
+# originály fotek (jen záloha, na web nepatří)
+public/images/originaly/
