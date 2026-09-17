@@ -1,0 +1,235 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base>
+<div class="reveal-kruh" aria-hidden="true"></div>
+
+<div class="demolista">
+  <div class="demolista-vlevo">
+    <div class="logo">jiná<b>mysl</b></div>
+    <button class="prepni-hlava" onclick="prepnout()" aria-label="Přepnout pohled: zvenčí nebo zblízka">
+      <svg class="prepni-mozek" viewBox="0 0 84 68" aria-hidden="true">
+        <path class="hemi leva" d="M40 8 C30 4 18 6 12 15 C6 12 2 20 6 26 C0 30 2 40 9 42 C7 50 15 58 25 56 C30 62 40 60 40 52 Z"></path>
+        <path class="hemi prava" d="M44 8 C54 4 66 6 72 15 C78 12 82 20 78 26 C84 30 82 40 75 42 C77 50 69 58 59 56 C54 62 44 60 44 52 Z"></path>
+      </svg>
+      <span class="prepni-text">
+        <span class="prepni-hl"><span class="zv">Podívat se zblízka →</span><span class="zb">Zpět, podívat se zvenčí →</span></span>
+        <span class="prepni-pod"><span class="zv">Jak přemýšlíme a hledáme řešení.</span><span class="zb">Zpět do přehledu studia.</span></span>
+      </span>
+    </button>
+  </div>
+  <div class="progres" aria-hidden="true">
+    <span data-f="problem">PROBLÉM</span><i></i>
+    <span data-f="porozumeni">POROZUMĚNÍ</span><i></i>
+    <span data-f="napad">NÁPAD</span><i></i>
+    <span data-f="realita">REALITA</span>
+  </div>
+  <div class="perspektiva" aria-live="polite">
+    <span class="tecka"></span>
+    <span class="zv">Právě se díváš zvenčí</span>
+    <span class="zb">Právě se díváš zblízka</span>
+  </div>
+</div>
+
+<!-- ═══════════ ZVENČÍ (tmavé studio, výchozí) ═══════════ -->
+<main class="zvenci-web">
+
+  <header class="d-hero">
+    <div class="d-hero-galerie" aria-hidden="true">
+      <div class="d-foto" style="background-image:url('/images/hero-1-vyzkum.webp')"></div>
+      <div class="d-foto" style="background-image:url('/images/hero-2-proces.webp')"></div>
+      <div class="d-foto" style="background-image:url('/images/hero-3-timeline.webp')"></div>
+      <div class="d-foto" style="background-image:url('/images/hero-4-sprint.webp')"></div>
+      <div class="d-hero-preliv"></div>
+    </div>
+    <div class="wrap">
+      <span class="d-eyebrow rethink">Service design · výzkum</span>
+      <h1 class="slova rethink">Design, který začíná <span class="zvyraz">u lidí.</span></h1>
+      <p class="pod rethink">Zjišťujeme, co lidé skutečně potřebují. A podle toho navrhujeme.</p>
+      <div class="akce rethink">
+        <a class="btn btn-plny" href="#projekty">Prohlédnout naše projekty <span class="sipka">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="d-sekce">
+    <div class="wrap">
+      <span class="d-stitek">Co děláme</span>
+      <h2 class="odhal d-h2-velky">Od první otázky až k řešení, které funguje.</h2>
+      <div class="d-oblasti">
+        <div class="d-oblast odhal"><span class="cn">01</span><h3>Výzkum</h3><p>Zjišťujeme, co lidé skutečně potřebují.</p></div>
+        <div class="d-oblast odhal"><span class="cn">02</span><h3>Návrh</h3><p>Převádíme poznatky do konkrétních řešení.</p></div>
+        <div class="d-oblast odhal"><span class="cn">03</span><h3>Přenos do praxe</h3><p>Pomáháme dostat nový způsob práce do praxe.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-pruh">
+    <svg class="vlna-nahoru" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,34 C288,52 576,22 864,34 C1152,46 1296,26 1440,34 L1440,60 L0,60 Z" fill="#ffffff"></path>
+    </svg>
+    <div class="in">
+      <span class="d-pruh-nad">V co věříme</span>
+      <p class="d-pruh-text">Produkt i služba mají vznikat <b>kolem lidí.</b> Ne kolem procesů.</p>
+      <p class="d-pruh-zaklad">To je základ našeho přístupu.</p>
+      <button class="d-pruh-cta" onclick="prepnout()">
+        <span class="hl">Podívat se zblízka <span class="sip">→</span></span>
+        <span class="pod">Jak přemýšlíme a hledáme řešení.</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="d-sekce" id="projekty">
+    <div class="wrap">
+      <div class="d-proj-hlava">
+        <div class="d-proj-hlava-txt">
+          <span class="d-stitek">Projekty</span>
+          <h2 class="odhal">Reálné výzvy. Skutečný dopad.</h2>
+        </div>
+        <div class="d-proj-vic odhal">
+          <p>Navrhujeme služby a produkty pro obce, neziskovky i firmy. Tady je výběr naší práce.</p>
+          <a class="d-proj-odkaz" href="#projekty">Všechny projekty <span class="sip">→</span></a>
+        </div>
+      </div>
+      <div class="d-proj">
+        <article class="d-proj-karta odhal">
+          <div class="d-proj-foto" style="background-image:url('/images/projekt-co-po-nas-zustane.webp')">
+            <span class="d-proj-narazka">?</span>
+            <div class="proj-otazka"><span class="lbl">otázka, ze které vznikl</span><p>„Jak v digitální době důstojně truchlit, a co po nás zůstane, když jsme byli hlavně online?"</p></div>
+          </div>
+          <div class="d-proj-info"><span class="d-chip">Žádost podána</span><h3>Co po nás zůstane</h3><p>Jak v digitální době probíhá truchlení? Navrhujeme důstojnější rozloučení a péči o digitální pozůstalost.</p></div>
+        </article>
+        <article class="d-proj-karta odhal">
+          <div class="d-proj-foto" style="background-image:url('/images/projekt-bezpeci-ve-verejne-sluzbe.webp')">
+            <span class="d-proj-narazka">?</span>
+            <div class="proj-otazka"><span class="lbl">otázka, ze které vznikl</span><p>„Cítí se dítě ve službě, která ho má chránit, doopravdy bezpečně?"</p></div>
+          </div>
+          <div class="d-proj-info"><span class="d-chip">Dokončeno</span><h3>Bezpečí ve veřejné službě</h3><p>Výzkum bezpečí ve službách kolem dítěte a rodiny. Zpráva je volně ke stažení.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-sekce">
+    <div class="wrap">
+      <span class="d-stitek">O nás</span>
+      <h2 class="odhal">Je nás pět a každá myslíme trochu jinak</h2>
+      <p class="d-uvod odhal">Spolek designérek, výzkumnic a produktových designérek. Poznaly jsme se při studiu na KISK MUNI.</p>
+      <div class="d-tym odhal">
+        <div class="d-clen"><img src="/images/tym-marie-zimmermannova.webp" alt="Marie Zimmermannová" loading="lazy"><h4>Marie Zimmermannová</h4><p>Duševní zdraví dětí · metodiky</p></div>
+        <div class="d-clen"><img src="/images/tym-alena-vetcha.webp" alt="Alena Vetchá" loading="lazy"><h4>Alena Vetchá</h4><p>UX výzkum · design služeb</p></div>
+        <div class="d-clen"><img src="/images/tym-petra-spilkova.webp" alt="Petra Spilková" loading="lazy"><h4>Petra Spilková</h4><p>Kvalitativní výzkum</p></div>
+        <div class="d-clen"><img src="/images/tym-ida-kvapilova.webp" alt="Ida Kvapilová" loading="lazy"><h4>Ida Kvapilová</h4><p>Design · facilitace</p></div>
+        <div class="d-clen"><img src="/images/tym-barbora-mysickova.webp" alt="Barbora Myšičková" loading="lazy"><h4>Barbora Myšičková</h4><p>Service design · data</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-cta">
+    <h2 class="odhal">Řešíš problém a nevíš, kudy dál?</h2>
+    <p class="odhal">Ozvi se. Na kávu, na workshop, nebo rovnou do projektu.</p>
+    <a class="btn" href="mailto:info@jinamysl.cz">Napište nám →</a>
+  </section>
+</main>
+
+<!-- ═══════════ ZBLÍZKA (světlý příběh mysli) ═══════════ -->
+<main class="zblizka-pribeh">
+  <div class="stopa" aria-hidden="true">
+    <svg viewBox="0 0 100 1000" preserveAspectRatio="none">
+      <path d="M52,8 C74,120 30,210 50,320 C66,410 40,455 46,515 C58,565 82,650 54,745 C38,825 62,905 50,995"></path>
+    </svg>
+  </div>
+
+  <div class="plocha">
+    <!-- INTRO -->
+    <section class="intro" data-f="problem">
+      <span class="psano odhal">pojď dovnitř rozpracovaného případu</span>
+      <h1 class="odhal odhal-2">Takhle přemýšlíme, než najdeme řešení.</h1>
+      <p class="odhal odhal-3">Není to náš proces v bodech. Je to jedna cesta, kterou spolu projdeme, od zadání až po tu jednu správnou otázku.</p>
+      <div class="scroll odhal odhal-3">Scrolluj</div>
+    </section>
+
+    <!-- PROBLÉM -->
+    <section class="beat" data-f="problem">
+      <div class="beat-text">
+        <span class="lbl">Problém</span>
+        <h2 class="beat-nadpis odhal">Klient přišel s jasným zadáním.</h2>
+        <p class="odhal odhal-2">Znělo to srozumitelně. Většina by rovnou začala vylepšovat obrazovky. My jsme se ale nejdřív zastavily.</p>
+      </div>
+      <div class="beat-art">
+        <p class="hand odhal" style="color:var(--akcent);font-size:23px;margin-bottom:16px;transform:rotate(-2deg)">co nám přistálo na stole ↓</p>
+        <div class="postit klient odhal odhal-2">„Lidé naši službu<br>nepoužívají."<br><span style="font-family:'Inter Tight';font-weight:700;font-size:12px;letter-spacing:.16em;color:#8a7a3f;display:block;margin-top:16px">— ZADÁNÍ OD KLIENTA</span></div>
+      </div>
+    </section>
+
+    <!-- první otázka -->
+    <section class="beat zrcadlo" data-f="problem">
+      <div class="beat-text">
+        <p class="hand odhal" style="font-size:clamp(30px,4.6vw,56px);color:var(--akcent);line-height:1.05;max-width:14ch">„A víme vůbec&nbsp;proč?"</p>
+      </div>
+      <div class="beat-text">
+        <p class="odhal odhal-2">Naše první otázka. Než cokoli změníme, chceme rozumět, co se lidem doopravdy honí hlavou.</p>
+      </div>
+    </section>
+
+    <!-- POROZUMĚNÍ, odhalení zvenčí→zblízka -->
+    <section class="beat" data-f="porozumeni">
+      <div class="beat-art">
+        <figure class="polaroid znacka odhal"><img src="/images/hero-1-vyzkum.webp" alt="" loading="lazy"><figcaption>rozhovory s lidmi</figcaption></figure>
+      </div>
+      <div class="beat-text">
+        <span class="lbl">Porozumění</span>
+        <h2 class="beat-nadpis odhal">Sedly jsme si k lidem.</h2>
+        <div class="zvzb odhal odhal-2">
+          <div class="radek venek"><span class="tag">CO ŘÍKALO ZADÁNÍ</span><span class="txt">„Uživatelé tomu nerozumějí."</span></div>
+          <div class="sipka">a co jsme zjistily zblízka ↓</div>
+          <div class="radek blizko"><span class="tag">CO JSME ZJISTILY</span><span class="txt">„Ve skutečnosti se bojí udělat chybu."</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PŘERÁMOVÁNÍ (vrchol) -->
+    <section class="prerám" data-f="porozumeni">
+      <span class="uvod">takže měníme otázku</span>
+      <span class="stara">„Jak jim líp vysvětlit službu?"</span>
+      <p class="nova">Jak jim dát <b>jistotu</b>, že dělají správný krok?</p>
+    </section>
+
+    <!-- NÁPAD -->
+    <section class="beat zrcadlo" data-f="napad">
+      <div class="beat-text">
+        <span class="lbl">Nápad</span>
+        <h2 class="beat-nadpis odhal">Teprve teď kreslíme.</h2>
+        <p class="odhal odhal-2">Když víme, na co doopravdy odpovídáme, řešení se rýsuje skoro samo. Ne lepší návod, ale drobná jistota po každém kroku.</p>
+      </div>
+      <div class="beat-art">
+        <figure class="polaroid znacka odhal"><img src="/images/hero-4-sprint.webp" alt="" loading="lazy"><figcaption>první prototyp</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- testování -->
+    <section class="beat" data-f="realita">
+      <div class="beat-text">
+        <span class="lbl">Realita</span>
+        <h2 class="beat-nadpis odhal">Zkoušíme to na lidech.</h2>
+        <p class="odhal odhal-2">Nanečisto, se skutečnými uživateli. Měníme, dokud to nesedí. A pak přišla věta, na kterou jsme čekaly:</p>
+      </div>
+      <div class="beat-art">
+        <p class="citace odhal odhal-2">„Aha, <span class="mark">teď vím</span>, že jsem to udělal správně."</p>
+      </div>
+    </section>
+
+    <!-- ZÁVĚR -->
+    <section class="zaver" data-f="realita">
+      <p class="vysledek odhal">Až teď máme řešení.<br>Protože jsme nejdřív <span style="color:var(--akcent)">změnili otázku.</span></p>
+      <p class="co odhal odhal-2">Neřeší zadání, se kterým klient přišel. Řeší to, co jsme našly pod ním.</p>
+      <p class="dovetek odhal odhal-2">Docela dlouhá cesta na jednu správnou otázku, co?</p>
+      <div class="odkazy odhal odhal-3">
+        <button class="odkaz-hl" onclick="prepnout()">Takhle přemýšlíme u každého projektu. <span class="sip">→</span></button>
+        <button style="color:var(--seda);font-weight:600" onclick="prepnout()">Zpět, podívej se zvenčí <span class="sip">→</span></button>
+      </div>
+    </section>
+  </div>
+</main>
+
+</Base>

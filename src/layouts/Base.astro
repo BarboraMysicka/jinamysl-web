@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+const {
+  title = 'Jiná mysl, z. s. — design, který začíná u lidí',
+  popis = 'Spolek pěti designérek. Navrhujeme služby a produkty na základě skutečných potřeb lidí.',
+} = Astro.props;
+const kanon = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="cs" data-vrstva="zvenci">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={popis} />
+  <link rel="canonical" href={kanon} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- sdílení na sítích -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={popis} />
+  <meta property="og:url" content={kanon} />
+  <meta property="og:image" content="/og-nahled.png" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- bez bliknutí: zvolená mysl se nastaví ještě před vykreslením -->
+  <script is:inline>
+    try { var u = localStorage.getItem('jm-vrstva'); if (u) document.documentElement.dataset.vrstva = u; } catch (e) {}
+  </script>
+
+  <!-- fonty (v produkci se self-hostují kvůli rychlosti a GDPR) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <slot />
+  <script is:inline src="/app.js"></script>
+</body>
+</html>
