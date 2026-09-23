@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import HlavickaPodstranka from '../../components/HlavickaPodstranka.astro';
+import Paticka from '../../components/Paticka.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projekty = await getCollection('projekty');
+  return projekty.map((p) => ({ params: { slug: p.id }, props: { projekt: p } }));
+}
+
+const { projekt } = Astro.props;
+const { Content } = await render(projekt);
+const d = projekt.data;
+---
+<Base title={`${d.nazev} — Jiná mysl, z. s.`} popis={d.lead} zamkniZvenci={true}>
+  <HlavickaPodstranka />
+
+  <main class="podstranka">
+    <article class="projekt">
+      <div class="wrap">
+        <a class="zpet" href="/#projekty">← Projekty</a>
+        <span class="d-stitek">Projekt</span>
+        <h1 class="projekt-nazev">{d.nazev}</h1>
+        <p class="projekt-lead">{d.lead}</p>
+
+        {d.foto && (
+          <div class="projekt-foto" style={`background-image:url('${d.foto}')`} role="img" aria-label={d.nazev}></div>
+        )}
+
+        {d.perex && <p class="projekt-perex">{d.perex}</p>}
+
+        <div class="projekt-telo">
+          <Content />
+        </div>
+
+        {d.pdf && (
+          <p class="projekt-cta-radek">
+            <a class="btn btn-plny" href={d.pdf}>{d.pdfLabel ?? 'Stáhnout výzkumnou zprávu'} <span class="sipka">→</span></a>
+          </p>
+        )}
+
+        {d.meta.length > 0 && (
+          <aside class="projekt-meta" aria-label="Informace o projektu">
+            <h2 class="projekt-meta-nadpis">Informace o projektu</h2>
+            <dl>
+              {d.meta.map((m) => (
+                <div class="projekt-meta-radek">
+                  <dt>{m.k}</dt>
+                  <dd>{m.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        )}
+
+        {d.publicita && (
+          <p class="projekt-publicita">{d.publicita}</p>
+        )}
+      </div>
+    </article>
+  </main>
+
+  <Paticka />
+</Base>

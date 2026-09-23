@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import HlavickaPodstranka from '../components/HlavickaPodstranka.astro';
+import Paticka from '../components/Paticka.astro';
+import { getCollection, render } from 'astro:content';
+
+const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.poradi);
+const medailonky = await Promise.all(
+  tym.map(async (c) => ({ id: c.id, data: c.data, Content: (await render(c)).Content }))
+);
+---
+<Base title="O nás — Jiná mysl, z. s." popis="Jiná mysl vznikla pro chvíle, kdy se ukáže, že problém, který se všichni snaží řešit, je možná položený špatně. Poznejte pět zakladatelek." zamkniZvenci={true}>
+  <HlavickaPodstranka />
+
+  <main class="podstranka onas">
+    <!-- 1. HERO -->
+    <section class="onas-hero">
+      <div class="wrap">
+        <span class="d-stitek">O nás</span>
+        <h1 class="onas-h1">Jiná mysl</h1>
+        <p class="onas-statement odhal">Jiná mysl nevznikla proto, že svět potřebuje další organizaci. Vznikla pro chvíle, kdy se ukáže, že problém, který se všichni snaží řešit, je možná položený špatně.</p>
+        <p class="onas-uvod odhal odhal-2">Přicházíme z různých profesních světů. A právě rozdílnost pohledů používáme jako pracovní nástroj. Výzkumem, designem a zkušeností z praxe hledáme to, co v zavedeném pohledu na problém chybí.</p>
+        <p class="onas-pointa odhal odhal-3">Ne proto, abychom byli jiní. Ale abychom dokázali vidět něco, co zatím vidět nebylo.</p>
+      </div>
+    </section>
+
+    <!-- 2. NAŠE CESTA -->
+    <section class="d-sekce onas-cesta">
+      <div class="wrap">
+        <span class="d-stitek">Naše cesta</span>
+        <h2 class="odhal">Je nás pět. A naštěstí každá myslíme trochu jinak.</h2>
+        <div class="onas-text odhal">
+          <p>Poznaly jsme se při studiu Designu informačních služeb na KISK Masarykovy univerzity.</p>
+          <p>Nevznikly jsme jako skupina lidí se stejným profesním profilem. Právě naopak. Každá jsme přicházely z jiného prostředí a při společné práci jsme si začaly všímat, že na stejné situaci každá vidí něco jiného.</p>
+          <p>To, co mohlo být komplikací, se stalo metodou.</p>
+          <p>Jedna položí otázku z pohledu člověka uvnitř služby. Druhá vidí systém. Další odhalí slabé místo uživatelské zkušenosti, přinese pohled organizace nebo začne pochybovat o předpokladu, který už ostatní považují za samozřejmý.</p>
+          <p>Právě v těchto střetech často vzniká nový pohled.</p>
+          <p>Z první společné výzkumné práce proto postupně vzniklo něco většího: Jiná mysl, z. s. – prostor, ve kterém můžeme otevírat složitá a dosud málo uchopená témata a zkoušet, co se stane, když je přestaneme řešit pouze uvnitř hranic jednoho oboru.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ZAKLADATELKY (řada fotografií) -->
+    <section class="d-sekce onas-zakladatelky">
+      <div class="wrap">
+        <span class="d-stitek">Zakladatelky</span>
+        <h2 class="odhal">Pět lidí, pět pohledů</h2>
+        <div class="d-tym odhal">
+          {tym.map((c) => (
+            <a class="d-clen" href={`#${c.id}`}>
+              <img src={c.data.foto} alt={c.data.jmeno} loading="lazy" />
+              <h4>{c.data.jmeno}</h4>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MEDAILONKY -->
+    <section class="d-sekce onas-medailonky">
+      <div class="wrap">
+        {medailonky.map((c) => (
+          <article class="medailonek odhal" id={c.id}>
+            <div class="medailonek-foto">
+              <img src={c.data.foto} alt={c.data.jmeno} loading="lazy" />
+            </div>
+            <div class="medailonek-text">
+              <h3>{c.data.jmeno}</h3>
+              <p class="medailonek-role">{c.data.role}</p>
+              {c.data.statutar && <p class="medailonek-statutar">{c.data.statutar}</p>}
+              <div class="medailonek-bio"><c.Content /></div>
+              {c.data.linkedin && (
+                <a class="medailonek-in" href={c.data.linkedin} target="_blank" rel="noopener">LinkedIn →</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 5. JINÁ MYSL, Z. S. (organizační blok) -->
+    <section class="onas-org-obal">
+      <div class="wrap">
+        <aside class="onas-org">
+          <h2>Jiná mysl, z. s.</h2>
+          <p>Jiná mysl, z. s. je nezisková organizace zaměřená na sociální inovace, výzkum a design služeb.</p>
+          <dl>
+            <div><dt>Předsedkyně a statutární orgán</dt><dd>PhDr. Marie Zimmermannová</dd></div>
+            <div><dt>IČO</dt><dd>24654159</dd></div>
+            <div><dt>Sídlo</dt><dd>Únanov 431, 671 31 Únanov</dd></div>
+          </dl>
+          <a class="onas-org-odkaz" href="https://or.justice.cz/ias/ui/rejstrik-$firma?ico=24654159" target="_blank" rel="noopener">Veřejný rejstřík →</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 6. A NEJSME NA TO JEN V PĚTI -->
+    <section class="d-sekce onas-vic-lidi">
+      <div class="wrap">
+        <h2 class="odhal">A nejsme na to jen v pěti</h2>
+        <div class="onas-text odhal">
+          <p>Jiná mysl založilo pět lidí. Naše projekty ale vznikají s mnohem širším okruhem lidí.</p>
+          <p>Podle tématu zapojujeme výzkumníky, designéry, odborníky z konkrétních oblastí i lidi s přímou zkušeností. Tým proto není u každého projektu stejný – a ani nechceme, aby byl.</p>
+          <p>Správní lidé se mají skládat kolem problému, ne problém kolem lidí, které už máme.</p>
+        </div>
+        <a class="btn btn-plny" href="/lide-a-kontakty">Lidé &amp; kontakty <span class="sipka">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <Paticka />
+</Base>

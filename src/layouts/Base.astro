@@ -3,11 +3,12 @@ import '../styles/global.css';
 const {
   title = 'Jiná mysl, z. s. — design, který začíná u lidí',
   popis = 'Spolek pěti designérek. Navrhujeme služby a produkty na základě skutečných potřeb lidí.',
+  zamkniZvenci = false,
 } = Astro.props;
 const kanon = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang="cs" data-vrstva="zvenci">
+<html lang="cs" data-vrstva="zvenci" data-zamek={zamkniZvenci ? 'zvenci' : undefined}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,7 +28,7 @@ const kanon = new URL(Astro.url.pathname, Astro.site);
 
   <!-- bez bliknutí: zvolená mysl se nastaví ještě před vykreslením -->
   <script is:inline>
-    try { var u = localStorage.getItem('jm-vrstva'); if (u) document.documentElement.dataset.vrstva = u; } catch (e) {}
+    try { if (!document.documentElement.dataset.zamek) { var u = localStorage.getItem('jm-vrstva'); if (u) document.documentElement.dataset.vrstva = u; } } catch (e) {}
   </script>
 
   <!-- fonty (v produkci se self-hostují kvůli rychlosti a GDPR) -->

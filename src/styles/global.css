@@ -178,22 +178,11 @@ html[data-vrstva="zblizka"] .mozek-popis .zb{display:inline}
 .d-proj-karta{border:1px solid var(--linka);border-radius:12px;overflow:hidden;background:var(--bg2);transition:transform .3s,border-color .3s}
 .d-proj-karta:hover{transform:translateY(-4px);border-color:var(--akcent)}
 .d-proj-foto{position:relative;overflow:hidden;aspect-ratio:16/10;background-size:cover;background-position:center;filter:grayscale(.15)}
-/* dvě mysli i na kartě: na hover se odhalí otázka, ze které projekt vznikl */
-.proj-otazka{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 26px;
-  background:linear-gradient(180deg,rgba(16,16,21,.1),rgba(16,16,21,.9));opacity:0;transition:opacity .4s ease}
-.d-proj-karta:hover .proj-otazka{opacity:1}
-.proj-otazka .lbl{font-family:'Caveat';font-size:22px;color:#F06595;margin-bottom:6px}
-.proj-otazka p{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:19px;line-height:1.26;color:#fff;margin:0}
-.d-proj-narazka{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;
-  background:rgba(255,255,255,.16);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-style:italic;font-size:17px;transition:opacity .3s;z-index:1}
-.d-proj-karta:hover .d-proj-narazka{opacity:0}
 .d-proj-info{padding:26px 28px}
-.d-chip{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  padding:6px 12px;border-radius:100px;background:var(--akcent-soft);color:var(--akcent);margin-bottom:14px}
 .d-proj-info h3{font-family:'Inter Tight';font-weight:700;font-size:22px;margin-bottom:8px}
 .d-proj-info p{color:var(--seda);font-size:15px}
 /* o nás */
-.d-tym{margin-top:50px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.d-tym{margin-top:50px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
 .d-clen img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;filter:grayscale(1) brightness(.92)}
 .d-clen h4{font-family:'Inter Tight';font-weight:700;font-size:15.5px;margin-top:14px}
 .d-clen p{font-size:12.5px;color:var(--seda);margin-top:3px;line-height:1.4}
@@ -295,7 +284,7 @@ html[data-vrstva="zblizka"] .progres{display:flex}
   .d-oblast + .d-oblast{border-left:none;border-top:1px solid var(--linka);padding-top:26px}
   .d-oblast p{max-width:none}
   .d-proj{grid-template-columns:1fr}
-  .d-tym{grid-template-columns:repeat(2,1fr)}
+  .d-tym{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vlna-nahoru{height:38px}
   .d-proj-hlava{gap:20px}
   .prepni-pod{display:none}
@@ -308,4 +297,138 @@ html[data-vrstva="zblizka"] .progres{display:flex}
   .plovak{opacity:1!important}
   .mark{background-size:100% 100%!important}
   .d-hero-galerie .d-foto:first-child{opacity:1!important}
+}
+
+/* ═══════════ NAVIGACE, PODSTRÁNKY, PATIČKA ═══════════ */
+
+/* hlavní navigace v hlavičce (na úvodní straně jen v režimu „zvenčí") */
+.hlavni-nav{display:flex;gap:26px;align-items:center;font-family:'Inter Tight';font-weight:700;font-size:14px}
+.hlavni-nav a{color:var(--seda);text-decoration:none;transition:color .25s}
+.hlavni-nav a:hover{color:var(--akcent)}
+html[data-vrstva="zblizka"] .demolista .hlavni-nav{display:none}
+
+/* hlavička podstránek */
+.pod-hlava{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linka);padding:14px 0}
+.pod-hlava-in{display:flex;align-items:center;justify-content:space-between;gap:16px}
+a.logo{font-family:'Inter Tight';font-weight:800;letter-spacing:-.02em;font-size:18px;color:var(--ink);text-decoration:none}
+a.logo b{color:var(--akcent)}
+.podstranka{padding-bottom:10px}
+
+/* ── projektové karty (přehled) ── */
+.d-proj-uvod{margin-top:18px;max-width:72ch;display:flex;flex-direction:column;gap:14px}
+.d-proj-uvod p{color:var(--seda);font-size:17px;line-height:1.65}
+.d-proj-karta{display:flex;flex-direction:column}
+.d-proj-foto{display:block;text-decoration:none}
+.d-proj-info{padding:26px 28px;display:flex;flex-direction:column;flex:1}
+.d-proj-info h3 a{color:var(--ink);text-decoration:none}
+.d-proj-karta:hover .d-proj-info h3 a{color:var(--akcent)}
+.d-proj-meta{font-size:12.5px;letter-spacing:.04em;color:var(--akcent);font-weight:600;margin:0 0 12px}
+.d-proj-text{color:var(--seda);font-size:15px;line-height:1.6}
+.d-proj-detail{margin-top:18px;font-family:'Inter Tight';font-weight:700;font-size:15px;color:var(--akcent);
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;align-self:flex-start}
+.d-proj-detail .sip{transition:transform .3s ease;display:inline-block}
+.d-proj-detail:hover .sip{transform:translateX(4px)}
+.d-proj-detail:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* tým jako prokliknutelné dlaždice (na úvodní i O nás) */
+a.d-clen{text-decoration:none;color:inherit;display:block}
+a.d-clen h4{color:var(--ink);transition:color .25s}
+a.d-clen:hover h4{color:var(--akcent)}
+.d-onas-vic{margin-top:34px}
+
+/* ── detail projektu ── */
+.projekt{padding:46px 0 80px}
+.zpet{display:inline-block;color:var(--seda);text-decoration:none;font-weight:600;font-size:14px;margin-bottom:26px}
+.zpet:hover{color:var(--akcent)}
+.projekt-nazev{font-family:'Inter Tight';font-weight:800;font-size:clamp(32px,5vw,60px);line-height:1.04;max-width:18ch;margin-bottom:20px}
+.projekt-lead{font-family:'Inter Tight';font-weight:600;font-size:clamp(20px,2.6vw,30px);line-height:1.3;color:var(--ink);max-width:26ch;margin-bottom:32px}
+.projekt-foto{aspect-ratio:16/8;border-radius:16px;background-size:cover;background-position:center;filter:grayscale(.12);margin-bottom:36px}
+.projekt-perex{color:var(--seda);font-size:18px;line-height:1.7;max-width:66ch;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--linka)}
+.projekt-telo{max-width:66ch}
+.projekt-telo p{color:#d7d7de;font-size:17.5px;line-height:1.75;margin-bottom:22px}
+.projekt-telo h2{font-family:'Inter Tight';font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.2;margin:44px 0 18px}
+.projekt-cta-radek{margin:34px 0}
+.projekt-meta{margin-top:52px;background:var(--bg2);border:1px solid var(--linka);border-radius:16px;padding:30px 32px;max-width:72ch}
+.projekt-meta-nadpis{font-family:'Inter Tight';font-weight:700;font-size:16px;margin-bottom:18px;color:var(--ink)}
+.projekt-meta dl{display:flex;flex-direction:column;gap:14px}
+.projekt-meta-radek{display:grid;grid-template-columns:210px 1fr;gap:18px}
+.projekt-meta-radek dt{color:var(--seda2);font-size:12.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding-top:2px}
+.projekt-meta-radek dd{color:var(--ink);font-size:15.5px;line-height:1.55}
+.projekt-publicita{margin-top:24px;font-size:13.5px;line-height:1.6;color:var(--seda);max-width:72ch;font-style:italic}
+
+/* ── O nás ── */
+.onas-hero{padding:50px 0 18px}
+.onas-h1{font-family:'Inter Tight';font-weight:800;font-size:clamp(40px,7vw,88px);line-height:1;margin:6px 0 28px}
+.onas-statement{font-family:'Inter Tight';font-weight:700;font-size:clamp(22px,3.2vw,38px);line-height:1.24;max-width:24ch;margin-bottom:24px}
+.onas-uvod{color:var(--seda);font-size:18px;line-height:1.75;max-width:60ch;margin-bottom:20px}
+.onas-pointa{font-family:'Inter Tight';font-weight:600;font-size:clamp(18px,2.3vw,26px);line-height:1.35;color:var(--akcent);max-width:36ch}
+.onas-text{max-width:64ch;display:flex;flex-direction:column;gap:18px;margin-top:20px}
+.onas-text p{color:#d7d7de;font-size:17.5px;line-height:1.75}
+.onas-cesta h2,.onas-vic-lidi h2,.onas-zakladatelky h2{max-width:26ch}
+
+.onas-medailonky{padding-top:16px}
+.medailonek{display:grid;grid-template-columns:180px 1fr;gap:34px;padding:38px 0;border-top:1px solid var(--linka);scroll-margin-top:96px}
+.medailonek-foto img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;filter:grayscale(1) brightness(.92)}
+.medailonek-text h3{font-family:'Inter Tight';font-weight:800;font-size:26px;margin-bottom:6px}
+.medailonek-role{color:var(--akcent);font-weight:600;font-size:14px;letter-spacing:.02em;margin-bottom:4px}
+.medailonek-statutar{color:var(--seda);font-size:13.5px;margin-bottom:16px}
+.medailonek-role + .medailonek-bio{margin-top:14px}
+.medailonek-bio p{color:#d0d0d8;font-size:16.5px;line-height:1.7;margin-bottom:14px}
+.medailonek-in{display:inline-block;margin-top:6px;color:var(--akcent);font-weight:700;font-size:14px;text-decoration:none}
+.medailonek-in:hover{text-decoration:underline;text-underline-offset:4px}
+
+.onas-org-obal{padding:58px 0;border-top:1px solid var(--linka)}
+.onas-org{background:var(--bg2);border:1px solid var(--linka);border-radius:16px;padding:32px 34px;max-width:640px}
+.onas-org h2{font-family:'Inter Tight';font-weight:700;font-size:22px;margin-bottom:12px}
+.onas-org > p{color:var(--seda);font-size:15.5px;line-height:1.6;margin-bottom:20px;max-width:52ch}
+.onas-org dl{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.onas-org dl div{display:grid;grid-template-columns:230px 1fr;gap:16px}
+.onas-org dt{color:var(--seda2);font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding-top:2px}
+.onas-org dd{color:var(--ink);font-size:15.5px}
+.onas-org-odkaz{color:var(--akcent);font-weight:700;font-size:14px;text-decoration:none}
+.onas-org-odkaz:hover{text-decoration:underline;text-underline-offset:4px}
+.onas-vic-lidi .btn{margin-top:30px}
+
+/* ── Lidé & kontakty ── */
+.lide-mrizka{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lide-karta{display:flex;gap:20px;align-items:center;border:1px solid var(--linka);border-radius:14px;padding:20px;background:var(--bg2)}
+.lide-karta img{width:92px;height:92px;object-fit:cover;border-radius:12px;filter:grayscale(1) brightness(.92);flex:0 0 auto}
+.lide-karta h3{font-family:'Inter Tight';font-weight:700;font-size:19px;margin-bottom:5px}
+.lide-role{color:var(--akcent);font-weight:600;font-size:13px;line-height:1.45}
+.lide-statutar{color:var(--seda);font-size:12.5px;margin-top:4px}
+.lide-mail{display:inline-block;margin-top:10px;color:var(--akcent);font-weight:700;font-size:14px;text-decoration:none;word-break:break-all}
+.lide-mail:hover{text-decoration:underline;text-underline-offset:4px}
+.kontakt-blok{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:820px}
+.kontakt-karta{border:1px solid var(--linka);border-radius:16px;padding:30px 32px;background:var(--bg2)}
+.kontakt-karta h3{font-family:'Inter Tight';font-weight:700;font-size:20px;margin-bottom:10px}
+.kontakt-karta p{color:var(--seda);font-size:15px;line-height:1.6;margin-bottom:6px}
+.kontakt-mail{display:inline-block;margin-top:12px;font-family:'Inter Tight';font-weight:700;font-size:19px;color:var(--akcent);text-decoration:none}
+.kontakt-mail:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ── patička ── */
+.paticka{border-top:1px solid var(--linka);padding:54px 0;background:var(--bg)}
+html[data-vrstva="zblizka"] .paticka{display:none}
+.paticka-in{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;align-items:start}
+.paticka-znacka .logo{font-family:'Inter Tight';font-weight:800;font-size:18px;color:var(--ink);margin-bottom:12px}
+.paticka-znacka .logo b{color:var(--akcent)}
+.paticka-znacka p{color:var(--seda);font-size:14px;line-height:1.6;max-width:42ch}
+.paticka-nav{display:flex;flex-direction:column;gap:10px}
+.paticka-nav a{color:var(--seda);text-decoration:none;font-weight:600;font-size:14.5px}
+.paticka-nav a:hover{color:var(--akcent)}
+.paticka-udaje p{color:var(--seda);font-size:14px;line-height:1.7}
+.paticka-cop{margin-top:12px;color:var(--seda2)}
+
+/* ── responsivita nových prvků ── */
+@media(max-width:1000px){ .demolista .hlavni-nav{display:none} }
+@media(max-width:820px){
+  .projekt-meta-radek{grid-template-columns:1fr;gap:4px}
+  .medailonek{grid-template-columns:1fr;gap:16px}
+  .medailonek-foto img{max-width:160px}
+  .lide-mrizka,.kontakt-blok{grid-template-columns:1fr}
+  .onas-org dl div{grid-template-columns:1fr;gap:2px}
+  .paticka-in{grid-template-columns:1fr 1fr;gap:26px}
+  .paticka-znacka{grid-column:1 / -1}
+  .pod-hlava-in{flex-wrap:wrap;gap:8px 18px}
+  .pod-hlava .hlavni-nav{gap:16px;font-size:13px}
 }

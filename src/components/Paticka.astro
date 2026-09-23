@@ -1,0 +1,22 @@
+---
+// Patička s organizačními a kontaktními údaji. Na úvodní stránce se v režimu „zblízka" (příběh) skryje.
+const rok = new Date().getFullYear();
+---
+<footer class="paticka">
+  <div class="wrap paticka-in">
+    <div class="paticka-znacka">
+      <div class="logo">jiná<b>mysl</b></div>
+      <p>Jiná mysl, z. s. — nezisková organizace zaměřená na sociální inovace, výzkum a design služeb.</p>
+    </div>
+    <nav class="paticka-nav" aria-label="Patička">
+      <a href="/#projekty">Projekty</a>
+      <a href="/o-nas">O nás</a>
+      <a href="/lide-a-kontakty">Lidé &amp; kontakty</a>
+    </nav>
+    <div class="paticka-udaje">
+      <p>IČO: 24654159</p>
+      <p>Sídlo: Únanov 431, 671 31 Únanov</p>
+      <p class="paticka-cop">© {rok} Jiná mysl, z. s.</p>
+    </div>
+  </div>
+</footer>

@@ -1,5 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import Paticka from '../components/Paticka.astro';
+import { getCollection } from 'astro:content';
+
+const projekty = (await getCollection('projekty')).sort((a, b) => a.data.poradi - b.data.poradi);
+const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.poradi);
 ---
 <Base>
 <div class="reveal-kruh" aria-hidden="true"></div>
@@ -18,6 +23,11 @@ import Base from '../layouts/Base.astro';
       </span>
     </button>
   </div>
+  <nav class="hlavni-nav" aria-label="Hlavní navigace">
+    <a href="#projekty">Projekty</a>
+    <a href="/o-nas">O nás</a>
+    <a href="/lide-a-kontakty">Lidé &amp; kontakty</a>
+  </nav>
   <div class="progres" aria-hidden="true">
     <span data-f="problem">PROBLÉM</span><i></i>
     <span data-f="porozumeni">POROZUMĚNÍ</span><i></i>
@@ -81,31 +91,26 @@ import Base from '../layouts/Base.astro';
 
   <section class="d-sekce" id="projekty">
     <div class="wrap">
-      <div class="d-proj-hlava">
-        <div class="d-proj-hlava-txt">
-          <span class="d-stitek">Projekty</span>
-          <h2 class="odhal">Reálné výzvy. Skutečný dopad.</h2>
-        </div>
-        <div class="d-proj-vic odhal">
-          <p>Navrhujeme služby a produkty pro obce, neziskovky i firmy. Tady je výběr naší práce.</p>
-          <a class="d-proj-odkaz" href="#projekty">Všechny projekty <span class="sip">→</span></a>
-        </div>
+      <span class="d-stitek">Projekty</span>
+      <h2 class="odhal">Reálné výzvy. Skutečný dopad.</h2>
+      <div class="d-proj-uvod odhal">
+        <p>Nejzajímavější problémy často nejsou tam, kde je všichni hledají. V Jiná mysl se na známá témata díváme z jiného úhlu, hledáme přehlížené souvislosti a místa, která propadají mezi systémy, obory nebo běžným způsobem uvažování.</p>
+        <p>Nezačínáme hotovým řešením. Výzkumem a designem nejdřív hledáme lepší otázku a potom ji ověřujeme v reálném světě. Naše projekty jsou místem, kde nové pohledy vznikají, dostávají konkrétní podobu a otevírají témata, která chceme rozvíjet dál.</p>
       </div>
       <div class="d-proj">
-        <article class="d-proj-karta odhal">
-          <div class="d-proj-foto" style="background-image:url('/images/projekt-co-po-nas-zustane.webp')">
-            <span class="d-proj-narazka">?</span>
-            <div class="proj-otazka"><span class="lbl">otázka, ze které vznikl</span><p>„Jak v digitální době důstojně truchlit, a co po nás zůstane, když jsme byli hlavně online?"</p></div>
-          </div>
-          <div class="d-proj-info"><span class="d-chip">Žádost podána</span><h3>Co po nás zůstane</h3><p>Jak v digitální době probíhá truchlení? Navrhujeme důstojnější rozloučení a péči o digitální pozůstalost.</p></div>
-        </article>
-        <article class="d-proj-karta odhal">
-          <div class="d-proj-foto" style="background-image:url('/images/projekt-bezpeci-ve-verejne-sluzbe.webp')">
-            <span class="d-proj-narazka">?</span>
-            <div class="proj-otazka"><span class="lbl">otázka, ze které vznikl</span><p>„Cítí se dítě ve službě, která ho má chránit, doopravdy bezpečně?"</p></div>
-          </div>
-          <div class="d-proj-info"><span class="d-chip">Dokončeno</span><h3>Bezpečí ve veřejné službě</h3><p>Výzkum bezpečí ve službách kolem dítěte a rodiny. Zpráva je volně ke stažení.</p></div>
-        </article>
+        {projekty.map((p) => (
+          <article class="d-proj-karta odhal">
+            {p.data.foto && (
+              <a class="d-proj-foto" href={`/projekty/${p.id}`} style={`background-image:url('${p.data.foto}')`} aria-label={`Detail projektu ${p.data.nazev}`}></a>
+            )}
+            <div class="d-proj-info">
+              <h3><a href={`/projekty/${p.id}`}>{p.data.nazev}</a></h3>
+              <p class="d-proj-meta">{p.data.metaKarta}</p>
+              <p class="d-proj-text">{p.data.kartaText}</p>
+              <a class="d-proj-detail" href={`/projekty/${p.id}`}>Detail projektu <span class="sip">→</span></a>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -113,22 +118,24 @@ import Base from '../layouts/Base.astro';
   <section class="d-sekce">
     <div class="wrap">
       <span class="d-stitek">O nás</span>
-      <h2 class="odhal">Je nás pět a každá myslíme trochu jinak</h2>
-      <p class="d-uvod odhal">Spolek designérek, výzkumnic a produktových designérek. Poznaly jsme se při studiu na KISK MUNI.</p>
+      <h2 class="odhal">Je nás pět a naštěstí každá myslíme trochu jinak</h2>
+      <p class="d-uvod odhal">Spolek designérek, výzkumnic a produktových designérek. Poznaly jsme se při studiu Designu informačních služeb na KISK Masarykovy univerzity.</p>
       <div class="d-tym odhal">
-        <div class="d-clen"><img src="/images/tym-marie-zimmermannova.webp" alt="Marie Zimmermannová" loading="lazy"><h4>Marie Zimmermannová</h4><p>Duševní zdraví dětí · metodiky</p></div>
-        <div class="d-clen"><img src="/images/tym-alena-vetcha.webp" alt="Alena Vetchá" loading="lazy"><h4>Alena Vetchá</h4><p>UX výzkum · design služeb</p></div>
-        <div class="d-clen"><img src="/images/tym-petra-spilkova.webp" alt="Petra Spilková" loading="lazy"><h4>Petra Spilková</h4><p>Kvalitativní výzkum</p></div>
-        <div class="d-clen"><img src="/images/tym-ida-kvapilova.webp" alt="Ida Kvapilová" loading="lazy"><h4>Ida Kvapilová</h4><p>Design · facilitace</p></div>
-        <div class="d-clen"><img src="/images/tym-barbora-mysickova.webp" alt="Barbora Myšičková" loading="lazy"><h4>Barbora Myšičková</h4><p>Service design · data</p></div>
+        {tym.map((c) => (
+          <a class="d-clen" href={`/o-nas#${c.id}`}>
+            <img src={c.data.foto} alt={c.data.jmeno} loading="lazy" />
+            <h4>{c.data.jmeno}</h4>
+          </a>
+        ))}
       </div>
+      <a class="d-proj-detail d-onas-vic odhal" href="/o-nas">Víc o nás a našem přístupu <span class="sip">→</span></a>
     </div>
   </section>
 
   <section class="d-cta">
     <h2 class="odhal">Řešíš problém a nevíš, kudy dál?</h2>
     <p class="odhal">Ozvi se. Na kávu, na workshop, nebo rovnou do projektu.</p>
-    <a class="btn" href="mailto:info@jinamysl.cz">Napište nám →</a>
+    <a class="btn" href="mailto:marie.zimmermannova@jinamysl.cz">Napište nám →</a>
   </section>
 </main>
 
@@ -231,5 +238,7 @@ import Base from '../layouts/Base.astro';
     </section>
   </div>
 </main>
+
+<Paticka />
 
 </Base>

@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import HlavickaPodstranka from '../components/HlavickaPodstranka.astro';
+import Paticka from '../components/Paticka.astro';
+import { getCollection } from 'astro:content';
+
+const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.poradi);
+---
+<Base title="Lidé & kontakty — Jiná mysl, z. s." popis="Zakladatelky Jiná mysl a kontaktní údaje spolku." zamkniZvenci={true}>
+  <HlavickaPodstranka />
+
+  <main class="podstranka">
+    <section class="onas-hero">
+      <div class="wrap">
+        <span class="d-stitek">Lidé &amp; kontakty</span>
+        <h1 class="onas-h1">Lidé za Jiná mysl</h1>
+        <p class="onas-uvod odhal">Jiná mysl založilo pět lidí. Naše projekty ale vznikají s širším okruhem výzkumníků, designérů, odborníků z konkrétních oblastí i lidí s přímou zkušeností. Tým proto není u každého projektu stejný.</p>
+      </div>
+    </section>
+
+    <section class="d-sekce">
+      <div class="wrap">
+        <span class="d-stitek">Zakladatelky</span>
+        <div class="lide-mrizka">
+          {tym.map((c) => (
+            <article class="lide-karta odhal">
+              <img src={c.data.foto} alt={c.data.jmeno} loading="lazy" />
+              <div>
+                <h3>{c.data.jmeno}</h3>
+                <p class="lide-role">{c.data.role}</p>
+                {c.data.statutar && <p class="lide-statutar">{c.data.statutar}</p>}
+                {c.data.email && <a class="lide-mail" href={`mailto:${c.data.email}`}>{c.data.email}</a>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="d-sekce">
+      <div class="wrap">
+        <span class="d-stitek">Kontakt</span>
+        <div class="kontakt-blok odhal">
+          <div class="kontakt-karta">
+            <h3>Napište nám</h3>
+            <p>Obecné dotazy, spolupráce i média.</p>
+            <a class="kontakt-mail" href="mailto:marie.zimmermannova@jinamysl.cz">marie.zimmermannova@jinamysl.cz</a>
+          </div>
+          <div class="kontakt-karta kontakt-udaje">
+            <h3>Jiná mysl, z. s.</h3>
+            <p>IČO: 24654159</p>
+            <p>Sídlo: Únanov 431, 671 31 Únanov</p>
+            <a class="onas-org-odkaz" href="https://or.justice.cz/ias/ui/rejstrik-$firma?ico=24654159" target="_blank" rel="noopener">Veřejný rejstřík →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Paticka />
+</Base>
