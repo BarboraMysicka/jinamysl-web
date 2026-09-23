@@ -1,35 +1,42 @@
-name: Nasazení na GitHub Pages
+name: Nasazení na Forpsi (FTP)
+
+# Po každém pushi na větev main se web sestaví a nahraje na Forpsi přes FTP.
+# FTP údaje jsou uložené v GitHub → Settings → Secrets and variables → Actions:
+#   FTP_SERVER      – FTP server (host) z Forpsi
+#   FTP_USERNAME    – FTP přihlašovací jméno
+#   FTP_PASSWORD    – FTP heslo
+#   FTP_SERVER_DIR  – cílová složka webu na Forpsi, např. /www/  (s lomítkem na konci)
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Stažení kódu
         uses: actions/checkout@v4
-      - name: Build Astro
-        uses: withastro/action@v3
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalace závislostí
+        run: npm ci
+
+      - name: Sestavení webu
+        run: npm run build
+
+      - name: Nahrání na Forpsi přes FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
