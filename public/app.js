@@ -20,8 +20,15 @@ function animujSlova(){
   });
 }
 function nastavAria(){
-  const el=document.documentElement, btn=document.querySelector('.prepni-hlava');
-  if(btn) btn.setAttribute('aria-pressed', el.dataset.vrstva==='zblizka' ? 'true':'false');
+  const el=document.documentElement;
+  document.querySelectorAll('.prepinac .strana').forEach(s=>{
+    s.setAttribute('aria-pressed', s.dataset.cil===el.dataset.vrstva ? 'true':'false');
+  });
+}
+// klik na konkrétní stranu přepínače (Poodstoupit / Ponořit se)
+function prepnoutNa(cil){
+  if(document.documentElement.dataset.vrstva===cil) return; // už jsem tam
+  prepnout();
 }
 function prepnout(){
   const el=document.documentElement;
@@ -41,7 +48,7 @@ function prepnout(){
   // přístupnost: bez animace přepni rovnou
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ dokonci(); return; }
   // radiální odhalení z mozku
-  const btn=document.querySelector('.prepni-hlava');
+  const btn=document.querySelector('.prepinac-mozek') || document.querySelector('.prepinac');
   const r=btn?btn.getBoundingClientRect():{left:90,top:28,width:0,height:0};
   const cx=r.left+r.width/2, cy=r.top+r.height/2;
   const maxR=Math.hypot(Math.max(cx,innerWidth-cx),Math.max(cy,innerHeight-cy));

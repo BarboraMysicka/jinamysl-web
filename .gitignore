@@ -10,3 +10,4 @@ npm-debug.log*
 
 # originály fotek (jen záloha, na web nepatří)
 public/images/originaly/
+_zaloha-originaly/

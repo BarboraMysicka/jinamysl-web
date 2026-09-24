@@ -10,34 +10,38 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
 <div class="reveal-kruh" aria-hidden="true"></div>
 
 <div class="demolista">
-  <div class="demolista-vlevo">
-    <div class="logo">jiná<b>mysl</b></div>
-    <button class="prepni-hlava" onclick="prepnout()" aria-label="Přepnout pohled: zvenčí nebo zblízka">
-      <svg class="prepni-mozek" viewBox="0 0 84 68" aria-hidden="true">
+  <a class="logo" href="/">jiná<b>mysl</b></a>
+
+  <div class="prepinac-obal">
+    <span class="prepinac-hook">Přepněte na Jinou <b>mysl</b>.</span>
+    <span class="prepinac-motto">Odstup pro nadhled. Hloubka pro pochopení.</span>
+    <div class="prepinac" role="group" aria-label="Přepněte na Jinou mysl">
+      <button class="strana" data-cil="zvenci" onclick="prepnoutNa('zvenci')">
+        <span class="sip">←</span> Poodstoupit
+      </button>
+      <svg class="prepinac-mozek" viewBox="0 0 84 68" aria-hidden="true">
         <path class="hemi leva" d="M40 8 C30 4 18 6 12 15 C6 12 2 20 6 26 C0 30 2 40 9 42 C7 50 15 58 25 56 C30 62 40 60 40 52 Z"></path>
         <path class="hemi prava" d="M44 8 C54 4 66 6 72 15 C78 12 82 20 78 26 C84 30 82 40 75 42 C77 50 69 58 59 56 C54 62 44 60 44 52 Z"></path>
       </svg>
-      <span class="prepni-text">
-        <span class="prepni-hl"><span class="zv">Podívat se zblízka →</span><span class="zb">Zpět, podívat se zvenčí →</span></span>
-        <span class="prepni-pod"><span class="zv">Jak přemýšlíme a hledáme řešení.</span><span class="zb">Zpět do přehledu studia.</span></span>
-      </span>
-    </button>
+      <button class="strana" data-cil="zblizka" onclick="prepnoutNa('zblizka')">
+        Ponořit se <span class="sip">→</span>
+      </button>
+    </div>
   </div>
+
   <nav class="hlavni-nav" aria-label="Hlavní navigace">
     <a href="#projekty">Projekty</a>
     <a href="/o-nas">O nás</a>
     <a href="/lide-a-kontakty">Lidé &amp; kontakty</a>
   </nav>
-  <div class="progres" aria-hidden="true">
+</div>
+
+<div class="progres-bar" aria-hidden="true">
+  <div class="progres">
     <span data-f="problem">PROBLÉM</span><i></i>
     <span data-f="porozumeni">POROZUMĚNÍ</span><i></i>
     <span data-f="napad">NÁPAD</span><i></i>
     <span data-f="realita">REALITA</span>
-  </div>
-  <div class="perspektiva" aria-live="polite">
-    <span class="tecka"></span>
-    <span class="zv">Právě se díváš zvenčí</span>
-    <span class="zb">Právě se díváš zblízka</span>
   </div>
 </div>
 
@@ -82,9 +86,9 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
       <span class="d-pruh-nad">V co věříme</span>
       <p class="d-pruh-text">Produkt i služba mají vznikat <b>kolem lidí.</b> Ne kolem procesů.</p>
       <p class="d-pruh-zaklad">To je základ našeho přístupu.</p>
-      <button class="d-pruh-cta" onclick="prepnout()">
-        <span class="hl">Podívat se zblízka <span class="sip">→</span></span>
-        <span class="pod">Jak přemýšlíme a hledáme řešení.</span>
+      <button class="d-pruh-cta" onclick="prepnoutNa('zblizka')">
+        <span class="hl">Ponořit se pod povrch <span class="sip">→</span></span>
+        <span class="pod">Jak přemýšlíme, než najdeme řešení.</span>
       </button>
     </div>
   </section>
@@ -133,8 +137,8 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
   </section>
 
   <section class="d-cta">
-    <h2 class="odhal">Řešíš problém a nevíš, kudy dál?</h2>
-    <p class="odhal">Ozvi se. Na kávu, na workshop, nebo rovnou do projektu.</p>
+    <h2 class="odhal">Řešíte problém a nevíte, kudy dál?</h2>
+    <p class="odhal">Ozvěte se. Na kávu, na workshop, nebo rovnou do projektu.</p>
     <a class="btn" href="mailto:marie.zimmermannova@jinamysl.cz">Napište nám →</a>
   </section>
 </main>
@@ -150,10 +154,10 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
   <div class="plocha">
     <!-- INTRO -->
     <section class="intro" data-f="problem">
-      <span class="psano odhal">pojď dovnitř rozpracovaného případu</span>
+      <span class="psano odhal">pojďte dovnitř rozpracovaného případu</span>
       <h1 class="odhal odhal-2">Takhle přemýšlíme, než najdeme řešení.</h1>
       <p class="odhal odhal-3">Není to náš proces v bodech. Je to jedna cesta, kterou spolu projdeme, od zadání až po tu jednu správnou otázku.</p>
-      <div class="scroll odhal odhal-3">Scrolluj</div>
+      <div class="scroll odhal odhal-3">Scrollujte</div>
     </section>
 
     <!-- PROBLÉM -->
@@ -232,8 +236,8 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
       <p class="co odhal odhal-2">Neřeší zadání, se kterým klient přišel. Řeší to, co jsme našly pod ním.</p>
       <p class="dovetek odhal odhal-2">Docela dlouhá cesta na jednu správnou otázku, co?</p>
       <div class="odkazy odhal odhal-3">
-        <button class="odkaz-hl" onclick="prepnout()">Takhle přemýšlíme u každého projektu. <span class="sip">→</span></button>
-        <button style="color:var(--seda);font-weight:600" onclick="prepnout()">Zpět, podívej se zvenčí <span class="sip">→</span></button>
+        <button class="odkaz-hl" onclick="prepnoutNa('zvenci')">Takhle přemýšlíme u každého projektu. <span class="sip">→</span></button>
+        <button style="color:var(--seda);font-weight:600" onclick="prepnoutNa('zvenci')">Zpět, poodstupte <span class="sip">→</span></button>
       </div>
     </section>
   </div>

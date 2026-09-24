@@ -1,11 +1,8 @@
-name: Nasazení na Forpsi (FTP)
+name: Kontrola sestavení webu
 
-# Po každém pushi na větev main se web sestaví a nahraje na Forpsi přes FTP.
-# FTP údaje jsou uložené v GitHub → Settings → Secrets and variables → Actions:
-#   FTP_SERVER      – FTP server (host) z Forpsi
-#   FTP_USERNAME    – FTP přihlašovací jméno
-#   FTP_PASSWORD    – FTP heslo
-#   FTP_SERVER_DIR  – cílová složka webu na Forpsi, např. /www/  (s lomítkem na konci)
+# Po každém pushi na main se web jen SESTAVÍ (kontrola, že je vše v pořádku).
+# Nasazení na Forpsi se dělá ručně přes Web FTP (Forpsi nepouští FTP z GitHubu / zahraničních serverů).
+# Až Forpsi FTP ze zahraničí povolí, dá se sem vrátit krok „FTP-Deploy-Action" a nasazovat automaticky.
 
 on:
   push:
@@ -13,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Stažení kódu
@@ -30,14 +27,3 @@ jobs:
 
       - name: Sestavení webu
         run: npm run build
-
-      - name: Nahrání na Forpsi přes FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
