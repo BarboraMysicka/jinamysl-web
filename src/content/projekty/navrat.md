@@ -34,7 +34,7 @@ Dělá to ve chvíli, kdy sám prožívá jednu z nejtěžších situací svého
 
 Projekt Návrat proto nestaví rodiče do role prostředníka mezi institucemi. Rodič je pro nás člověkem, který nese samostatnou návratovou zátěž – praktickou, rozhodovací i emoční – a potřebuje pro ni vlastní oporu.
 
-## Návrat nechápeme jako poslední krok léčby
+## Tady přepínáme na Jinou mysl.
 
 Nezačínáme diagnózou. Začínáme situací.
 

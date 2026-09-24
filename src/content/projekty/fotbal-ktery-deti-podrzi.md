@@ -21,9 +21,11 @@ Dítě pokazí přihrávku. Sedí na lavičce. Tým prohraje. Kamarád je lepš�
 
 Fotbal proto nevnímáme jen jako sport. V menší obci je to jedno z nejsilnějších prostředí, která dítě dlouhodobě formují.
 
+Pro nás to není jen teoretická úvaha. Předsedkyně Jiné mysli Marie Zimmermannová žije v Únanově, kde je fotbal – stejně jako v řadě dalších obcí – jedním z přirozených center komunitního života a její rodina je s místním fotbalem dlouhodobě propojená. Právě odtud vznikla myšlenka využít prostředí, které už děti, rodiče, trenéry i další lidi přirozeně spojuje, k posilování psychické odolnosti, zdravého vztahu k výkonu, vztahů a podpory mezi dětmi. Fotbal je pro nás proto nejen sportem, ale i cestou, jak pracovat s komunitou tam, kde už přirozeně existuje.
+
 Nechceme ze sportu odstranit výkon, soutěž ani ambice. Chceme zkoumat, jaký je rozdíl mezi náročným prostředím, ve kterém dítě roste, a prostředím, ve kterém se začne bát udělat chybu.
 
-## Nevezeme do klubu hotový program
+## Tady přepínáme na Jinou mysl.
 
 Projekt realizujeme s fotbalovou komunitou FCC SK Únanov. Nejdřív budeme mapovat konkrétní situace z běžného života klubu společně s trenéry, dětmi a mladými hráči, rodiči a dalšími lidmi kolem týmu.
 

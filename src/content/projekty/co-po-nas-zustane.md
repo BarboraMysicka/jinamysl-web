@@ -20,7 +20,9 @@ Jenže společenská pravidla pro to, co s touto stopou dělat po smrti člověk
 
 Co znamená znovu slyšet hlas člověka, který zemřel? Proč někteří lidé dál píší do společného chatu? Kdy digitální připomínka pomáhá a kdy zraňuje? Komu patří soukromá konverzace, když jeden z jejích účastníků už nežije? A co bychom sami chtěli jednou zanechat lidem, které máme rádi?
 
-## Nejdřív chceme porozumět skutečné zkušenosti lidí
+Pro Marii Zimmermannovou, předsedkyni Jiné mysli, má téma i osobní začátek. Ve 33 letech náhle přišla o manžela a ještě dalších deset let mu psala zprávy na Messengeru. Právě tahle zkušenost otevřela otázku, co s truchlením dělá možnost zůstávat s člověkem v kontaktu i poté, co zemřel – prostřednictvím zpráv, hlasu, fotografií a dalších digitálních stop. Z osobní zkušenosti se tak stala otázka, kterou chceme pochopit mnohem šířeji.
+
+## Tady přepínáme na Jinou mysl.
 
 Projekt Co po nás zůstane začíná kvalitativním výzkumem digitálního truchlení a digitálního odkazu. Zajímá nás, jak pozůstalí pracují se zprávami, hlasem, fotografiemi, sociálními sítěmi a dalšími digitálními stopami – co jim pomáhá, co bolí a jaké hranice považují za důležité.
 

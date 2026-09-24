@@ -35,7 +35,7 @@ Na tématu jsme proto provedli kvalitativní výzkum v agendě OSPOD a v návazn
 
 Jedním z nejsilnějších motivů je kontinuita příběhu dítěte. Jakmile se jeho zkušenost rozpadne na jednotlivé zprávy, úkony a předání mezi institucemi, může se ztrácet kontext, vztah i význam toho, co dítě skutečně prožívá.
 
-## Proč u výzkumné zprávy nekončíme
+## Tady přepínáme na Jinou mysl.
 
 Nechceme z výzkumu vyrobit další formulář nebo checklist. Chceme zkoumat, jak lze bezpečí zabudovat přímo do fungování veřejné služby: do předávání informací, konzultací, práce s nejistotou a rozdělení odpovědnosti.
 
