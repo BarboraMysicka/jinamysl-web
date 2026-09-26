@@ -39,8 +39,9 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
 
     <section class="d-sekce" id="napiste-nam">
       <div class="wrap">
-        <span class="d-stitek">Napište nám</span>
+        <span class="d-stitek">Kontakt</span>
         <h2 class="odhal">Napište nám rovnou tady</h2>
+        <p class="onas-uvod odhal">Nabídka spolupráce, dotaz k projektu nebo jen námět — ozveme se, jak nejdřív to půjde.</p>
         <div class="kontakt-blok odhal">
           <form class="kontakt-form" action="https://formsubmit.co/marie.zimmermannova@jinamysl.cz" method="POST">
             <input type="hidden" name="_subject" value="Nová zpráva z webu jinamysl.cz" />
@@ -54,7 +55,7 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
             </label>
             <label class="pole">
               <span>Váš e-mail</span>
-              <input type="email" name="email" required autocomplete="email" placeholder="abyste dostali odpověď" />
+              <input type="email" name="email" required autocomplete="email" />
             </label>
             <label class="pole">
               <span>Zpráva</span>
