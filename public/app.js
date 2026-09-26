@@ -127,6 +127,23 @@ function nastavStagger(){
 }
 // první návštěva vždy zvenčí; jinak si pamatuj volbu
 (function(){ try{ const u=localStorage.getItem('jm-vrstva'); if(u) document.documentElement.dataset.vrstva=u; }catch(e){} })();
+// zkopírování e-mailu do schránky (bez otevírání pošty), s vizuální zpětnou vazbou
+function zkopirujMail(btn){
+  var mail=btn.dataset.mail || btn.querySelector('.mail-kopie-adresa').textContent;
+  var stav=btn.querySelector('.mail-kopie-stav');
+  var hotovo=function(){
+    if(stav) stav.textContent='Zkopírováno ✓';
+    btn.classList.add('hotovo');
+    clearTimeout(btn._kt);
+    btn._kt=setTimeout(function(){ if(stav) stav.textContent='Kliknutím zkopírujete'; btn.classList.remove('hotovo'); }, 2000);
+  };
+  var nahrada=function(){
+    try{ var t=document.createElement('textarea'); t.value=mail; t.style.position='fixed'; t.style.opacity='0';
+      document.body.appendChild(t); t.focus(); t.select(); document.execCommand('copy'); document.body.removeChild(t); hotovo(); }catch(e){}
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(mail).then(hotovo).catch(nahrada); }
+  else nahrada();
+}
 // jemné pozvání k přepínači jen při úplně první návštěvě
 function lakadloPrepinace(){
   try{

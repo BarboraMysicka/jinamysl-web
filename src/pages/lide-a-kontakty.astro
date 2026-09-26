@@ -29,7 +29,6 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
                 <h3>{c.data.jmeno}</h3>
                 <p class="lide-role">{c.data.role}</p>
                 {c.data.statutar && <p class="lide-statutar">{c.data.statutar}</p>}
-                {c.data.email && <a class="lide-mail" href={`mailto:${c.data.email}`}>{c.data.email}</a>}
               </div>
             </article>
           ))}
@@ -67,7 +66,10 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
           <aside class="kontakt-karta kontakt-udaje">
             <h3>Jiná mysl, z. s.</h3>
             <p class="kontakt-stitek">E-mail</p>
-            <a class="kontakt-mail" href="mailto:marie.zimmermannova@jinamysl.cz">marie.zimmermannova@jinamysl.cz</a>
+            <button type="button" class="mail-kopie" onclick="zkopirujMail(this)" data-mail="marie.zimmermannova@jinamysl.cz" aria-label="Zkopírovat e-mail marie.zimmermannova@jinamysl.cz">
+              <span class="mail-kopie-adresa">marie.zimmermannova@jinamysl.cz</span>
+              <span class="mail-kopie-stav">Kliknutím zkopírujete</span>
+            </button>
             <p class="kontakt-udaje-org">IČO: 24654159<br />Sídlo: Únanov 431, 671 31 Únanov</p>
             <a class="onas-org-odkaz" href="https://or.justice.cz/ias/ui/rejstrik-$firma?ico=24654159" target="_blank" rel="noopener">Veřejný rejstřík →</a>
           </aside>
