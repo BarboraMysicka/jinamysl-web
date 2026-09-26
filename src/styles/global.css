@@ -546,3 +546,9 @@ html[data-vrstva="zblizka"] .progres-bar{display:flex;justify-content:center;pad
 .mail-kopie-stav{font-size:12px;color:var(--seda2);transition:color .2s}
 .mail-kopie.hotovo .mail-kopie-stav{color:var(--akcent)}
 .mail-kopie:focus-visible{outline:3px solid var(--akcent);outline-offset:3px;border-radius:6px}
+
+/* přeskočit na obsah (klávesnice / čtečky) */
+.preskocit{position:fixed;left:12px;top:-70px;z-index:100;background:var(--akcent);color:#fff;
+  padding:11px 18px;border-radius:10px;font-family:'Inter Tight';font-weight:700;font-size:14px;
+  text-decoration:none;transition:top .2s ease}
+.preskocit:focus{top:12px;outline:3px solid #fff;outline-offset:2px}

@@ -6,6 +6,25 @@ const {
   zamkniZvenci = false,
 } = Astro.props;
 const kanon = new URL(Astro.url.pathname, Astro.site);
+
+// strukturovaná data pro vyhledávače (Organization)
+const organizace = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Jiná mysl, z. s.',
+  url: 'https://jinamysl.cz',
+  logo: 'https://jinamysl.cz/apple-touch-icon.png',
+  image: 'https://jinamysl.cz/og-nahled.png',
+  email: 'marie.zimmermannova@jinamysl.cz',
+  description: 'Spolek designérek a výzkumnic. Výzkumem a human centred designem navrhujeme služby, produkty a sociální inovace podle skutečných potřeb lidí.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Únanov 431',
+    postalCode: '671 31',
+    addressLocality: 'Únanov',
+    addressCountry: 'CZ',
+  },
+};
 ---
 <!doctype html>
 <html lang="cs" data-vrstva="zvenci" data-zamek={zamkniZvenci ? 'zvenci' : undefined}>
@@ -41,8 +60,12 @@ const kanon = new URL(Astro.url.pathname, Astro.site);
   <link rel="preload" href="/fonts/inter-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-tight-800-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/fonts.css" />
+
+  <!-- strukturovaná data pro vyhledávače -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizace)} />
 </head>
 <body>
+  <a class="preskocit" href="#obsah">Přeskočit na obsah</a>
   <slot />
   <script is:inline src="/app.js"></script>
 </body>

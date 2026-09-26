@@ -46,7 +46,8 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
 </div>
 
 <!-- ═══════════ ZVENČÍ (tmavé studio, výchozí) ═══════════ -->
-<main class="zvenci-web">
+<main id="obsah">
+<div class="zvenci-web">
 
   <header class="d-hero">
     <div class="d-hero-galerie" aria-hidden="true">
@@ -143,10 +144,10 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
     <p class="odhal">Stačí pár řádků přímo z webu — odpovíme, jak nejdřív to půjde.</p>
     <a class="btn odhal" href="/lide-a-kontakty#napiste-nam">Napište nám →</a>
   </section>
-</main>
+</div>
 
 <!-- ═══════════ ZBLÍZKA (světlý příběh mysli) ═══════════ -->
-<main class="zblizka-pribeh">
+<div class="zblizka-pribeh">
   <div class="stopa" aria-hidden="true">
     <svg viewBox="0 0 100 1000" preserveAspectRatio="none">
       <path d="M52,8 C74,120 30,210 50,320 C66,410 40,455 46,515 C58,565 82,650 54,745 C38,825 62,905 50,995"></path>
@@ -243,6 +244,7 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
       </div>
     </section>
   </div>
+</div>
 </main>
 
 <Paticka />
