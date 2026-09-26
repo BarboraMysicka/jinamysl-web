@@ -107,10 +107,10 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
         {projekty.map((p) => (
           <article class="d-proj-karta odhal">
             {p.data.foto && (
-              <a class="d-proj-foto" href={`/projekty/${p.id}`} style={`background-image:url('${p.data.foto}')`} aria-label={`Detail projektu ${p.data.nazev}`}></a>
+              <div class="d-proj-foto" style={`background-image:url('${p.data.foto}')`} role="img" aria-label={p.data.nazev}></div>
             )}
             <div class="d-proj-info">
-              <h3><a href={`/projekty/${p.id}`}>{p.data.nazev}</a></h3>
+              <h3>{p.data.nazev}</h3>
               <p class="d-proj-meta">{p.data.metaKarta}</p>
               <p class="d-proj-text">{p.data.kartaText}</p>
               <a class="d-proj-detail" href={`/projekty/${p.id}`}>Detail projektu <span class="sip">→</span></a>
@@ -157,7 +157,7 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
     <!-- INTRO -->
     <section class="intro" data-f="problem">
       <span class="psano odhal">pojďte dovnitř rozpracovaného případu</span>
-      <h1 class="odhal odhal-2">Takhle přemýšlíme, než najdeme řešení.</h1>
+      <h2 class="odhal odhal-2">Takhle přemýšlíme, než najdeme řešení.</h2>
       <p class="odhal odhal-3">Není to náš proces v bodech. Je to jedna cesta, kterou spolu projdeme, od zadání až po tu jednu správnou otázku.</p>
       <div class="scroll odhal odhal-3">Scrollujte</div>
     </section>

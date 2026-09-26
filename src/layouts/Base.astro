@@ -2,7 +2,7 @@
 import '../styles/global.css';
 const {
   title = 'Jiná mysl, z. s. — design, který začíná u lidí',
-  popis = 'Spolek pěti designérek. Navrhujeme služby a produkty na základě skutečných potřeb lidí.',
+  popis = 'Spolek designérek a výzkumnic. Výzkumem a human centred designem navrhujeme služby, produkty a sociální inovace podle skutečných potřeb lidí.',
   zamkniZvenci = false,
 } = Astro.props;
 const kanon = new URL(Astro.url.pathname, Astro.site);
@@ -16,6 +16,7 @@ const kanon = new URL(Astro.url.pathname, Astro.site);
   <meta name="description" content={popis} />
   <link rel="canonical" href={kanon} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- sdílení na sítích -->
   <meta property="og:type" content="website" />
@@ -36,10 +37,10 @@ const kanon = new URL(Astro.url.pathname, Astro.site);
     try { if (!document.documentElement.dataset.zamek) { var u = localStorage.getItem('jm-vrstva'); if (u) document.documentElement.dataset.vrstva = u; } } catch (e) {}
   </script>
 
-  <!-- fonty (v produkci se self-hostují kvůli rychlosti a GDPR) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- fonty jsou self-hostované (rychlost + GDPR, žádné volání na Google) -->
+  <link rel="preload" href="/fonts/inter-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-tight-800-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
 </head>
 <body>
   <slot />

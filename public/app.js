@@ -127,5 +127,17 @@ function nastavStagger(){
 }
 // první návštěva vždy zvenčí; jinak si pamatuj volbu
 (function(){ try{ const u=localStorage.getItem('jm-vrstva'); if(u) document.documentElement.dataset.vrstva=u; }catch(e){} })();
+// jemné pozvání k přepínači jen při úplně první návštěvě
+function lakadloPrepinace(){
+  try{
+    if(localStorage.getItem('jm-videl-prepinac')) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ localStorage.setItem('jm-videl-prepinac','1'); return; }
+    if(document.documentElement.dataset.vrstva!=='zvenci') return;
+    const p=document.querySelector('.prepinac'); if(!p) return;
+    p.classList.add('laka');
+    setTimeout(()=>{ p.classList.remove('laka'); }, 6500);
+    localStorage.setItem('jm-videl-prepinac','1');
+  }catch(e){}
+}
 window.addEventListener('scroll',()=>{ spustReveal(); parallax(); pribehScroll(); },{passive:true});
-window.addEventListener('DOMContentLoaded',()=>{ nastavAria(); nastavStagger(); animujSlova(); spustReveal(); parallax(); pribehScroll(); });
+window.addEventListener('DOMContentLoaded',()=>{ nastavAria(); nastavStagger(); animujSlova(); spustReveal(); parallax(); pribehScroll(); lakadloPrepinace(); });
