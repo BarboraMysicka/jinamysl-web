@@ -33,37 +33,25 @@ function prepnoutNa(cil){
 function prepnout(){
   const el=document.documentElement;
   const nova = el.dataset.vrstva==='zvenci' ? 'zblizka' : 'zvenci';
-  const novaBg = nova==='zblizka' ? '#ffffff' : '#101015';
   const p=document.querySelector('.mozek-popis'); if(p) p.style.display='none';
   const dokonci = ()=>{
     el.dataset.vrstva=nova;
     try{ localStorage.setItem('jm-vrstva', nova); }catch(e){}
     nastavAria();
     window.scrollTo(0,0);
-    el.classList.add('prepinam');
     animujSlova(); spustReveal(); parallax(); pribehScroll();
-    clearTimeout(window._pt);
-    window._pt=setTimeout(()=>{ el.classList.remove('prepinam'); }, 900);
   };
   // přístupnost: bez animace přepni rovnou
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ dokonci(); return; }
-  // radiální odhalení z mozku
-  const btn=document.querySelector('.prepinac-mozek') || document.querySelector('.prepinac');
-  const r=btn?btn.getBoundingClientRect():{left:90,top:28,width:0,height:0};
-  const cx=r.left+r.width/2, cy=r.top+r.height/2;
-  const maxR=Math.hypot(Math.max(cx,innerWidth-cx),Math.max(cy,innerHeight-cy));
-  const kruh=document.querySelector('.reveal-kruh');
-  kruh.style.background=novaBg; kruh.style.opacity='1';
-  kruh.style.transition='none'; kruh.style.clipPath=`circle(0px at ${cx}px ${cy}px)`;
-  void kruh.offsetWidth;
-  kruh.style.transition='clip-path .5s cubic-bezier(.7,0,.3,1)';
-  kruh.style.clipPath=`circle(${maxR}px at ${cx}px ${cy}px)`;
-  setTimeout(()=>{
-    dokonci();                                  // přepni obsah schované za kruhem
-    kruh.style.transition='opacity .45s ease';
-    kruh.style.opacity='0';                     // odhal nový obsah
-    setTimeout(()=>{ kruh.style.transition='none'; kruh.style.clipPath=`circle(0px at ${cx}px ${cy}px)`; }, 470);
-  }, 520);
+  // decentní crossfade: obsah zhasne → přepneme → nový obsah se rozsvítí
+  // (pozadí přejede plynule díky transition na body)
+  el.classList.add('prepinam');
+  clearTimeout(window._pt);
+  window._pt=setTimeout(()=>{
+    dokonci();
+    // dvojitý rAF, aby prohlížeč stihl vykreslit ztlumený stav a pak plynule rozsvítit
+    requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ el.classList.remove('prepinam'); }); });
+  }, 240);
 }
 // scroll-reveal + aktivní krok osy (počítáno při scrollu, spolehlivé všude)
 function spustReveal(){

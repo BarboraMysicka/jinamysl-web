@@ -56,13 +56,10 @@ html[data-vrstva="zblizka"] .prepni-hlava .zv{display:none}
 html[data-vrstva="zblizka"] .prepni-hlava .zb{display:inline}
 .prepni-hlava:focus-visible{outline:3px solid var(--akcent);outline-offset:2px;border-radius:8px}
 
-/* ── „rozsvícení" / ztlumení při přepnutí ── */
-/* přepnutí jako radiální odhalení z mozku */
-.reveal-kruh{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:1;clip-path:circle(0px at 50% 50%)}
-
-/* obsah se při přepnutí „přemyslí" */
-html.prepinam .rethink{animation:rethink .7s cubic-bezier(.2,.7,.2,1) both}
-@keyframes rethink{0%{opacity:0;transform:translateY(18px) scale(.985);filter:blur(7px)}100%{opacity:1;transform:none;filter:blur(0)}}
+/* ── jemný přechod mezi režimy: decentní crossfade ── */
+/* obsah plynule zhasne a zase se rozsvítí; pozadí přejede díky transition na body */
+#obsah{transition:opacity .34s ease}
+html.prepinam #obsah{opacity:0}
 
 /* nadpis po slovech */
 .slova .w{display:inline-block;opacity:0;transform:translateY(.55em);filter:blur(4px)}
