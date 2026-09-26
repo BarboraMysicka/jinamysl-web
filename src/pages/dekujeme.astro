@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import HlavickaPodstranka from '../components/HlavickaPodstranka.astro';
+import Paticka from '../components/Paticka.astro';
+---
+<Base title="Děkujeme — Jiná mysl, z. s." popis="Zpráva byla odeslána." zamkniZvenci={true}>
+  <HlavickaPodstranka />
+  <main class="podstranka">
+    <section class="ctyri04">
+      <div class="wrap">
+        <span class="d-stitek">Hotovo</span>
+        <h1 class="ctyri04-h1">Děkujeme, zpráva odešla.</h1>
+        <p class="ctyri04-text">Ozveme se vám, jak nejdřív to půjde — obvykle během pár dní. Než se to stane, mrkněte klidně na naše projekty.</p>
+        <div class="ctyri04-odkazy">
+          <a class="btn btn-plny" href="/">Zpět na úvod <span class="sipka">→</span></a>
+          <nav class="ctyri04-nav">
+            <a href="/#projekty">Projekty</a>
+            <a href="/o-nas">O nás</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Paticka />
+</Base>
