@@ -17,7 +17,7 @@ html[data-vrstva="zblizka"]{
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;
-  -webkit-font-smoothing:antialiased;transition:background .6s ease,color .6s ease;overflow-x:hidden}
+  -webkit-font-smoothing:antialiased;transition:background .8s cubic-bezier(.4,0,.2,1),color .8s cubic-bezier(.4,0,.2,1);overflow-x:hidden}
 .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
 h1,h2,h3{letter-spacing:-.02em}
 img{display:block;max-width:100%}
@@ -58,7 +58,7 @@ html[data-vrstva="zblizka"] .prepni-hlava .zb{display:inline}
 
 /* ── jemný přechod mezi režimy: decentní crossfade ── */
 /* obsah plynule zhasne a zase se rozsvítí; pozadí přejede díky transition na body */
-#obsah{transition:opacity .34s ease}
+#obsah{transition:opacity .55s cubic-bezier(.4,0,.2,1)}
 html.prepinam #obsah{opacity:0}
 
 /* nadpis po slovech */

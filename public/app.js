@@ -51,7 +51,7 @@ function prepnout(){
     dokonci();
     // dvojitý rAF, aby prohlížeč stihl vykreslit ztlumený stav a pak plynule rozsvítit
     requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ el.classList.remove('prepinam'); }); });
-  }, 240);
+  }, 480);
 }
 // scroll-reveal + aktivní krok osy (počítáno při scrollu, spolehlivé všude)
 function spustReveal(){
