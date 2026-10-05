@@ -549,3 +549,6 @@ html[data-vrstva="zblizka"] .progres-bar{display:flex;justify-content:center;pad
   padding:11px 18px;border-radius:10px;font-family:'Inter Tight';font-weight:700;font-size:14px;
   text-decoration:none;transition:top .2s ease}
 .preskocit:focus{top:12px;outline:3px solid #fff;outline-offset:2px}
+
+/* O nás – klidný úvodní lead (bez dramatického velkého statementu) */
+.onas-lead{font-size:clamp(19px,2vw,23px);line-height:1.55;color:var(--ink);max-width:62ch;margin-bottom:18px;font-weight:500}
