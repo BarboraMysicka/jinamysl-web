@@ -20,7 +20,7 @@ const d = projekt.data;
     <article class="projekt">
       <div class="wrap">
         <a class="zpet" href="/#projekty">← Projekty</a>
-        <span class="d-stitek">Projekt</span>
+        <span class="d-stitek">{d.tema ?? 'Projekt'}</span>
         <h1 class="projekt-nazev">{d.nazev}</h1>
         <p class="projekt-lead">{d.lead}</p>
 

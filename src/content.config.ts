@@ -6,6 +6,7 @@ const projekty = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projekty' }),
   schema: z.object({
     nazev: z.string(),
+    tema: z.string().optional(),          // nadřazené téma (zobrazí se jako štítek na detailu)
     poradi: z.number().default(0),
     foto: z.string().optional(),          // /images/... ; když chybí (Návrat, Fotbal), karta i detail to ošetří
     kartaText: z.string(),                // krátký text na přehledovou kartu
