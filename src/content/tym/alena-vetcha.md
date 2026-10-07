@@ -3,6 +3,7 @@ jmeno: "Alena Vetchá"
 role: "UX design · uživatelský výzkum · digitální služby"
 foto: "/images/tym-alena-vetcha.webp"
 poradi: 2
+linkedin: "https://www.linkedin.com/in/alenatomeckova/"
 ---
 
 Alena do týmu přináší jednu velmi důležitou disciplínu UX: nenechat se příliš rychle zamilovat do vlastního řešení.
