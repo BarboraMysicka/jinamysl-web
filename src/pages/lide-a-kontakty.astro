@@ -29,6 +29,9 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
                 <h3>{c.data.jmeno}</h3>
                 <p class="lide-role">{c.data.role}</p>
                 {c.data.statutar && <p class="lide-statutar">{c.data.statutar}</p>}
+                {c.data.linkedin && (
+                  <a class="lide-in" href={c.data.linkedin} target="_blank" rel="noopener">LinkedIn →</a>
+                )}
               </div>
             </article>
           ))}
