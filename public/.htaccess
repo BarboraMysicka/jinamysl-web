@@ -18,7 +18,7 @@ ErrorDocument 404 /404.html
 
 # Cache statických souborů (rychlejší opakované návštěvy)
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|mjs|woff2|webp|png|jpe?g|gif|svg|ico)$">
+  <FilesMatch "\.(css|js|mjs|woff2|webp|png|jpe?g|gif|svg|ico|mp4)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
   # HTML ať je vždy čerstvé (nová verze se hned projeví)
