@@ -145,4 +145,21 @@ function lakadloPrepinace(){
   }catch(e){}
 }
 window.addEventListener('scroll',()=>{ spustReveal(); parallax(); pribehScroll(); },{passive:true});
-window.addEventListener('DOMContentLoaded',()=>{ nastavAria(); nastavStagger(); animujSlova(); spustReveal(); parallax(); pribehScroll(); lakadloPrepinace(); });
+window.addEventListener('DOMContentLoaded',()=>{ nastavAria(); nastavStagger(); animujSlova(); spustReveal(); parallax(); pribehScroll(); lakadloPrepinace(); spustTvare(); });
+
+/* ── HERO: předrenderovaná plynulá smyčka obličejů (jeden obraz = bez švu) ──
+   Při „omezit pohyb" se video nepřehrává – zůstane klidný statický obličej. */
+function spustTvare(){
+  var v = document.querySelector('.d-hero-anim .tvar-video');
+  if(!v) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    v.removeAttribute('autoplay');
+    var zastav = function(){ try{ v.pause(); v.currentTime = 0; }catch(e){} };
+    zastav(); v.addEventListener('play', zastav);
+    return;
+  }
+  var spust = function(){ var p = v.play(); if(p && p.catch) p.catch(function(){}); };
+  spust();
+  v.addEventListener('canplay', spust, { once:true });
+  v.addEventListener('loadeddata', spust, { once:true });
+}
