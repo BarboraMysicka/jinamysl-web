@@ -9,23 +9,22 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
 <Base>
 
 <div class="demolista">
-  <a class="logo" href="/">jiná<b>mysl</b></a>
+  <a class="logo" href="/">jiná<b>mysl.</b></a>
 
   <div class="prepinac-obal">
-    <span class="prepinac-hook">Přepněte na Jinou <b>mysl</b>.</span>
-    <span class="prepinac-motto">Odstup pro nadhled. Hloubka pro pochopení.</span>
-    <div class="prepinac" role="group" aria-label="Přepněte na Jinou mysl">
-      <button class="strana" data-cil="zvenci" onclick="prepnoutNa('zvenci')">
-        <span class="sip">←</span> Poodstoupit
-      </button>
+    <span class="prepinac-nad">Přepněte na Jinou <b>mysl</b>.</span>
+    <div class="prepinac" role="group" aria-label="Přepnout pohled na web: Poodstoupit (přehled) nebo Ponořit se (jak přemýšlíme)">
+      <button class="strana" data-cil="zvenci" onclick="prepnoutNa('zvenci')">Poodstoupit</button>
       <svg class="prepinac-mozek" viewBox="0 0 84 68" aria-hidden="true">
         <path class="hemi leva" d="M40 8 C30 4 18 6 12 15 C6 12 2 20 6 26 C0 30 2 40 9 42 C7 50 15 58 25 56 C30 62 40 60 40 52 Z"></path>
         <path class="hemi prava" d="M44 8 C54 4 66 6 72 15 C78 12 82 20 78 26 C84 30 82 40 75 42 C77 50 69 58 59 56 C54 62 44 60 44 52 Z"></path>
       </svg>
-      <button class="strana" data-cil="zblizka" onclick="prepnoutNa('zblizka')">
-        Ponořit se <span class="sip">→</span>
-      </button>
+      <button class="strana" data-cil="zblizka" onclick="prepnoutNa('zblizka')">Ponořit se <span class="strana-sip" aria-hidden="true">→</span></button>
     </div>
+    <span class="prepinac-rukou">
+      <svg class="sipka-rukou" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15 C7 9 12 6 21 5"/><path d="M15 3.5 L21 5 L18 10"/></svg>
+      Odstup pro nadhled. Hloubka pro pochopení.
+    </span>
   </div>
 
   <nav class="hlavni-nav" aria-label="Hlavní navigace">
@@ -49,19 +48,21 @@ const tym = (await getCollection('tym')).sort((a, b) => a.data.poradi - b.data.p
 <div class="zvenci-web">
 
   <header class="d-hero">
-    <div class="d-hero-galerie" aria-hidden="true">
-      <div class="d-foto" style="background-image:url('/images/hero-1-vyzkum.webp')"></div>
-      <div class="d-foto" style="background-image:url('/images/hero-2-proces.webp')"></div>
-      <div class="d-foto" style="background-image:url('/images/hero-3-timeline.webp')"></div>
-      <div class="d-foto" style="background-image:url('/images/hero-4-sprint.webp')"></div>
-      <div class="d-hero-preliv"></div>
-    </div>
-    <div class="wrap">
-      <span class="d-eyebrow rethink">Designové studio · sociální inovace</span>
-      <h1 class="slova rethink">Design, který začíná <span class="zvyraz">u lidí.</span></h1>
-      <p class="pod rethink">Jsme designové studio. Navrhujeme služby a produkty podle potřeb lidí, kteří je doopravdy používají.</p>
-      <div class="akce rethink">
-        <a class="btn btn-plny" href="#projekty">Prohlédnout naše projekty <span class="sipka">→</span></a>
+    <div class="wrap d-hero-grid">
+      <div class="d-hero-text">
+        <span class="d-eyebrow rethink">Designové studio · sociální inovace</span>
+        <h1 class="slova rethink">Design, který začíná <span class="zvyraz">u lidí.</span></h1>
+        <p class="pod rethink">Jsme designové studio. Navrhujeme služby a produkty podle potřeb lidí, kteří je doopravdy používají.</p>
+        <div class="akce rethink">
+          <a class="btn btn-plny" href="#projekty">Prohlédnout naše projekty <span class="sipka">→</span></a>
+        </div>
+      </div>
+      <div class="d-hero-anim rethink" aria-hidden="true">
+        <video class="tvar-video" autoplay muted loop playsinline preload="metadata"
+               poster="/media/hero-faces-v3-poster.webp">
+          <source src="/media/hero-faces-v3-mobile.mp4" type="video/mp4" media="(max-width:600px)" />
+          <source src="/media/hero-faces-v3.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   </header>
